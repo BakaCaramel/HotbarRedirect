@@ -14,4 +14,9 @@ public class MixinHotbarManager {
     private Path redirectLoad(Path p_310670_){
         return p_310670_.getParent().resolve(Config.location);
     }
+    @ModifyArg(method = "save",at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/NbtIo;write(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V"))
+    private Path redirectSave(Path p_311890_){
+        return p_311890_.getParent().resolve(Config.location);
+    }
+
 }
